@@ -9,10 +9,14 @@ class UserAndBuku extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'Username',
-        'Penulis',
-        'Penerbit',
-        'TahunTerbit',
+        'Password',
+        'Email',
+        'NamaLengkap',
+        'Alamat',
+        'Role',
     ];
+
 }
