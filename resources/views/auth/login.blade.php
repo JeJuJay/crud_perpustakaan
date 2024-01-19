@@ -37,75 +37,67 @@
                             <!-- Nested Row within Card Body -->
                                     <div class="p-5">
                                         <div class="text-center">
-                                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                            <h1 class="h4 text-gray-900 mb-4">Welcome Back! To library Digital</h1>
                                         </div>
                                         <form class="user" action="{{ route('login.action') }}" method="post" class="user">
                                             @csrf
-                                            @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->all as $error)
-                                                    <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
                                                 
-                                            @endif
+                                            
 
-                                            <div class="form-group">
-                                                <input type="email" class="form-control form-control-user
-                                                @error('email') is-invalid 
-                                                @enderror"
-                                                    id="exampleInputEmail" aria-describedby="emailHelp"
-                                                    placeholder="Enter Email Address..." name="email">
-                                                    @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $massage }}</strong>
-                                                    </span>
-                                                    @enderror
-                                            </div>
                                             <div class="form-group">
                                                 <input type="Username" class="form-control form-control-user
-                                                @error('Usernsme') is-invalid 
+                                                @error('Username') is-invalid 
                                                 @enderror"
-                                                    id="exampleInputUsername" aria-describedby="UsernameHelp"
-                                                    placeholder="Enter Username.." name="Username">
-                                                    @error('Username')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $massage }}</strong>
-                                                    </span>
-                                                    @enderror
+                                                id="exampleInputUsername" aria-describedby="UsernameHelp"
+                                                placeholder="Enter Username.." name="Username">
+                                                @error('Username')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" class="form-control form-control-user @error('password')
+                                                <input name ="Password" type="password" class="form-control form-control-user @error('Password')
                                                 is-invalid 
                                                 @enderror"
-                                                    id="exampleInputPassword" placeholder="Password" name="password">
-                                                    @error('password')
+                                                id="exampleInputPassword" placeholder="Password">
+                                                @error('Password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control form-control-user
+                                                @error('Email') is-invalid 
+                                                @enderror"
+                                                    id="exampleInputEmail"
+                                                    placeholder="Enter Email Address..." name="Email">
+                                                    @error('Email')
                                                     <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $massage }}</strong>
+                                                        <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
-
                                             </div>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox small">
                                                     <input type="checkbox" class="custom-control-input" id="customCheck">
                                                     <label class="custom-control-label" for="customCheck">Remember
                                                         Me</label>
+                                                    </div>
                                                 </div>
+                                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                                    Login
+                                                </button>
+                                            </form>
+                                            <hr>
+                                            <div class="text-center">
+                                                <a class="small" href="{{ route('register') }}">Create an Account!</a>
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">
-                                                Login
-                                            </button>
-                                        </form>
-                                        <hr>
-                                        <div class="text-center">
-                                            <a class="small" href="{{ route('register') }}">Create an Account!</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         
     

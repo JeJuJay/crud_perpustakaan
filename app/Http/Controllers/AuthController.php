@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserAndBuku;
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,19 +16,23 @@ class AuthController extends Controller
     }
 
     public function registerSave(Request $request){
-
-        Validator::make($request->all(), [
+        $request->validate([
             'Username' => 'required',
+            'Password' => 'required',
+            'Email' => 'required',  
             'NamaLengkap' => 'required',
-            'Email' => 'required',
-            'Password' => 'required|confirmed'
-        ])->validate();
+            'Alamat' => 'required'
+        ]);
+       
 
-        User::create([
+       
+
+        user::create([
             'Username' => $request->Username,
-            'NamaLengkap' => $request->NamaLengkap,
-            'Email' => $request->Email,
             'Password' => Hash::make($request->Password),
+            'Email' => $request->Email,
+            'NamaLengkap' => $request->NamaLengkap,
+            'Alamat' => $request->Alamat,
             'Role' => 'Admin'
         ]);
 
@@ -41,25 +45,41 @@ class AuthController extends Controller
     }
 
     public function loginAction(Request $request){
+       
 
-        Validator::make($request->all(), [
-            'Email' => 'required|Email',
+       $cek=$request->validate([
             'Username' => 'required',
-            'Password' => 'required|confirmed'
-        ])->validate();
+            'Password' => 'required',
+            'Email' => 'required'  
+        ]);
 
-
-        if (!Auth::attempt($request->only('Email', 'Username', 'Password'), $request->boolean('remember'))) {
-            throw ValidationException::withMesseges([
-                'Email' => trans('auth.failed')
-            ]);
-        }
-
-
-        $request->session()->regenerate();
-
+       
+       if (Auth::attempt($cek)){
         return redirect()->route('dashboard');
+       }else{
+        return redirect()->route('login');
+       }
 
+
+    }
+
+
+    public function logout(Request $request){
+
+        Auth::guard('web')->logout();
+
+
+        $request->session()->invalidate();
+
+        return redirect('/');
+
+    }
+
+
+    public function profile(){
+
+
+    return view('profile');
     }
 
 }

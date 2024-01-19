@@ -31,7 +31,7 @@
                 <!-- Nested Row within Card Body -->
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Buat Akun!</h1>
                             </div>
                             <form action="{{ route('register.save') }}" method="POST" class="user">
                                 @csrf
@@ -46,6 +46,24 @@
                                         @enderror
                                 </div>
                                 <div class="form-group">
+                                    <input name="Password" type="password" class="form-control form-control-user @error('Password')
+                                    is_invalid @enderror"
+                                        id="exampleInputPassword" placeholder="Password">
+                                        @error('Password')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                
+                            </div>
+                              <div class="form-group">
+                                    <input name="Email" type="text" class="form-control form-control-user @error('Email')
+                                    is-invalid @enderror" id="exampleInputEmail"
+                                        placeholder="Email Address">
+                                        @error('Email')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                </div>
+                            
+                                <div class="form-group">
                                     <input name="NamaLengkap" type="text" class="form-control form-control-user 
                                    @error('NamaLengkap') is-invalid
                                    @enderror" id="exampleNamaLengkap"
@@ -54,24 +72,17 @@
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
                                 </div>
-                                    
+
                                 <div class="form-group">
-                                    <input name="Email" type="text" class="form-control form-control-user @error('Email')
-                                    is-invalid @enderror" id="exampleInputEmail"
-                                        placeholder="Email Address">
-                                        @error('Email')
+                                    <input name="Alamat" type="text" class="form-control form-control-user 
+                                   @error('Alamat') is-invalid
+                                   @enderror" id="exampleNamaLengkap"
+                                        placeholder="Alamat">
+                                        @error('Alamat')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
                                 </div>
-                                    <div class="form-group">
-                                        <input name="Password" type="number" class="form-control form-control-user @error('Password')
-                                        is_invalid @enderror"
-                                            id="exampleInputPassword" placeholder="Password">
-                                            @error('Password')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    
-                                </div>
+                        
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </button>
