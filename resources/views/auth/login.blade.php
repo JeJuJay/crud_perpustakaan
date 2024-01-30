@@ -41,52 +41,24 @@
                                         </div>
                                         <form class="user" action="{{ route('login.action') }}" method="post" class="user">
                                             @csrf
-                                                
-                                            
-
-                                            <div class="form-group">
-                                                <input type="Username" class="form-control form-control-user
-                                                @error('Username') is-invalid 
-                                                @enderror"
-                                                id="exampleInputUsername" aria-describedby="UsernameHelp"
-                                                placeholder="Enter Username.." name="Username">
-                                                @error('Username')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <input name ="Password" type="password" class="form-control form-control-user @error('Password')
-                                                is-invalid 
-                                                @enderror"
-                                                id="exampleInputPassword" placeholder="Password">
-                                                @error('Password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                                
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control form-control-user
-                                                @error('Email') is-invalid 
-                                                @enderror"
-                                                    id="exampleInputEmail"
-                                                    placeholder="Enter Email Address..." name="Email">
-                                                    @error('Email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox small">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                    <label class="custom-control-label" for="customCheck">Remember
-                                                        Me</label>
-                                                    </div>
-                                                </div>
+                                             
+                                <div class="form-group">
+                                    <input name="Email" type="text" class="form-control form-control-user 
+                                   @error('Email') is-invalid
+                                   @enderror" id="exampleEmail"
+                                        placeholder="Surename">
+                                        @error('Email')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                </div>
+                                <div class="form-group">
+                                    <input name="Password" type="password" class="form-control form-control-user @error('Password')
+                                    is_invalid @enderror"
+                                        id="exampleInputPassword" placeholder="Password">
+                                        @error('Password')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                            </div>  
                                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                                     Login
                                                 </button>

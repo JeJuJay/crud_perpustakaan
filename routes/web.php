@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +26,17 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('login' , 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.action');
 
-    Route::get('logout', 'logout')->middleware('auth')->name('logout');
+    Route::get('logout', 'logout')->name('logout');
 });
 
-Route::middleware('auth')->group(function () {
+
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('dashboard', [AuthController::class, 'index'])->name('dashboard');
+    Route::get('databuku', [PageController::class, 'viewbuku'])->name('databuku');
+    return view('databuku');
+
 
     Route::get('/profile', [App\Http\Controllers\AuthController::class, 'profile'])->name('profile');
-});

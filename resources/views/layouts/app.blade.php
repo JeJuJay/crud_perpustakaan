@@ -45,8 +45,11 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                   
+                   <div class="dsm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
+                   </div>
 
+                   @yield('contents')
                     <!-- Content Row -->
                    
                             <!-- Bar Chart -->
@@ -54,7 +57,7 @@
 
                         <!-- Donut Chart -->
                        
-                        
+                         
 
                 </div>
                 <!-- /.container-fluid -->
@@ -91,7 +94,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
                 </div>
             </div>
         </div>
@@ -108,6 +111,20 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
+    
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+
+     <!-- Page level plugins -->
+     <script src="{{ asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
+
+     <!-- Page level custom scripts -->
+     <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
+     <script src="{{ ('assets/js/demo/chart-area-demo.js') }}"></scrip>
+     <script src="{{ ('assets/js/demo/chart-pie-demo.js') }}"></script>
+ 
 
 </body>
 

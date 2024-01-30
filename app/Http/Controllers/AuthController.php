@@ -15,6 +15,13 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+    public function index(){
+        $user = User::all();
+        return view('dashboard', compact(['user']));
+
+
+    }
+
     public function registerSave(Request $request){
         $request->validate([
             'Username' => 'required',
@@ -40,25 +47,26 @@ class AuthController extends Controller
     }
 
     public function login(){
-
+ 
         return view('auth.login');
     }
 
     public function loginAction(Request $request){
        
-
-       $cek=$request->validate([
-            'Username' => 'required',
-            'Password' => 'required',
-            'Email' => 'required'  
+        $auth=$request->validate([
+            'Email' => 'required',
+            'Password' => 'required'
         ]);
 
-       
-       if (Auth::attempt($cek)){
-        return redirect()->route('dashboard');
-       }else{
-        return redirect()->route('login');
-       }
+        $user = user::where('Email', $request->Email)->first();
+        $cek = user::where('Email', $request->Email)->count();
+        if($cek > 0) {
+            if(password_verify($request->Password, $user->Password)){
+                return redirect()->route('dashboard');
+            } else {
+                return redirect()->route('login');
+            }
+        }
 
 
     }
@@ -71,7 +79,7 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/');
+        return redirect('login');
 
     }
 

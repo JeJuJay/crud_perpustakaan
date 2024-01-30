@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Buku;
 
 use Illuminate\Http\Request;
 
@@ -9,9 +10,10 @@ class PageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function viewbuku()
     {
-        //
+        $buku = Buku::all();
+        return view('databuku', compact(['buku']));
     }
 
     /**
